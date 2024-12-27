@@ -1,6 +1,6 @@
-# Nombre del Proyecto
+# Proyecto Madrid ARchivo
 
-Una breve descripción de lo que hace tu proyecto y su propósito.
+Aplicación móvil basada en realidad aumentada para turismo cultural e histórico de la ciudad de Madrid.
 
 ## Instalación
 
@@ -9,11 +9,11 @@ Una breve descripción de lo que hace tu proyecto y su propósito.
    git clone https://github.com/tuusuario/tu-repositorio.git
    
 2. Navega al directorio del proyecto:
-   sh
+   ```sh
    cd tu-repositorio
   
 3. Instala las dependencias:
-   sh
+   ```sh
    npm install
   
 ## Uso
@@ -39,6 +39,6 @@ Abre un Pull Request.
 Este proyecto está bajo la licencia Apache 2.0. Consulta el archivo LICENSE para más detalles.
 
 ## Contacto
-Tu Nombre - @tuusuario - tuemail@example.com
+Gonzalo Rico Esteban - @gonzalogonzagon - gricoesteban@gmail.com
 
 Enlace al proyecto: https://github.com/tuusuario/tu-repositorio
