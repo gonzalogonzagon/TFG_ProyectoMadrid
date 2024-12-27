@@ -9,14 +9,12 @@ Una breve descripción de lo que hace tu proyecto y su propósito.
    git clone https://github.com/tuusuario/tu-repositorio.git
    
 2. Navega al directorio del proyecto:
-
-  sh
-  cd tu-repositorio
+   sh
+   cd tu-repositorio
   
 3. Instala las dependencias:
-
-  sh
-  npm install
+   sh
+   npm install
   
 ## Uso
 Ejemplos de cómo utilizar tu proyecto:
@@ -38,7 +36,7 @@ Haz push a la rama (git push origin feature/nueva-funcionalidad).
 Abre un Pull Request.
 
 ## Licencia
-Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
+Este proyecto está bajo la licencia Apache 2.0. Consulta el archivo LICENSE para más detalles.
 
 ## Contacto
 Tu Nombre - @tuusuario - tuemail@example.com
