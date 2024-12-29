@@ -25,11 +25,16 @@
         android:layout_height="wrap_content"
         android:background="@color/bottom_bar_menu"
         app:itemTextColor="@color/bottom_nav_selector"
+        app:itemIconTint="@color/bottom_nav_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:itemActiveIndicatorStyle="@style/CustomBottomNavActiveIndicator"
+        app:itemIconSize="36dp"
         app:menu="@menu/bottom_menu_app" />
+
+
+    <!--        style="@style/CustomBottomNavigationView"-->
 
     <!--    <TextView-->
     <!--        android:layout_width="wrap_content"-->
