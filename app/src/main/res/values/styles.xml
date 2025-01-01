@@ -16,7 +16,7 @@
     </style>
 
     <style name="BottomNavigationView.Active" parent="TextAppearance.AppCompat.Caption">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">44sp</item>
     </style>
 
     <style name="BottomNavigationView.Inactive" parent="TextAppearance.AppCompat.Caption">

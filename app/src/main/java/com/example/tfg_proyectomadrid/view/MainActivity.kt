@@ -1,4 +1,4 @@
-package com.example.tfg_proyectomadrid
+package com.example.tfg_proyectomadrid.view
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.tfg_proyectomadrid.R
 import com.example.tfg_proyectomadrid.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
