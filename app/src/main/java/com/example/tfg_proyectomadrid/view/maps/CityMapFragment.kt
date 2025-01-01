@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.tfg_proyectomadrid.BuildConfig
 import com.example.tfg_proyectomadrid.databinding.FragmentCityMapBinding
 import org.osmdroid.config.Configuration
-import org.osmdroid.library.BuildConfig
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.BoundingBox
 import org.osmdroid.util.GeoPoint
