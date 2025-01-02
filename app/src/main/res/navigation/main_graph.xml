@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/listPiFragment">
+
+    <fragment
+        android:id="@+id/cityMapFragment"
+        android:name="com.example.tfg_proyectomadrid.view.maps.CityMapFragment"
+        android:label="fragment_city_map"
+        tools:layout="@layout/fragment_city_map" />
+    <fragment
+        android:id="@+id/collectablesFragment"
+        android:name="com.example.tfg_proyectomadrid.view.collectables.CollectablesFragment"
+        android:label="fragment_collectables"
+        tools:layout="@layout/fragment_collectables" />
+    <fragment
+        android:id="@+id/listPiFragment"
+        android:name="com.example.tfg_proyectomadrid.view.list_pi.ListPiFragment"
+        android:label="fragment_list_pi"
+        tools:layout="@layout/fragment_list_pi" />
+</navigation>

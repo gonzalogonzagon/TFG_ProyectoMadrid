@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/listPiFragment"
+        android:icon="@drawable/ic_list_pi"
+        android:title="@string/list_pi" />
+
+    <item
+        android:id="@+id/cityMapFragment"
+        android:icon="@drawable/ic_map"
+        android:title="@string/city_map" />
+
+    <item
+        android:id="@+id/collectablesFragment"
+        android:icon="@drawable/ic_collection"
+        android:title="@string/collectables" />
+
+</menu>

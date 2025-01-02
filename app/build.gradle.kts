@@ -36,10 +36,17 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
+    // NavigationComponent
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.androidx.navigation.ui.ktx)
+
+    // osmdroid
+    implementation (libs.osmdroid.android)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
