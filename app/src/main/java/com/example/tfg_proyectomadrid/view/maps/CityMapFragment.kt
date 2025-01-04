@@ -1,6 +1,9 @@
 package com.example.tfg_proyectomadrid.view.maps
 
 import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +15,10 @@ import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.BoundingBox
 import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
+import org.osmdroid.views.overlay.Overlay
 
 class CityMapFragment : Fragment() {
 
@@ -49,11 +54,20 @@ class CityMapFragment : Fragment() {
     private fun setupMap() {
         // Initialize the map
         map = binding.map
-        map.setTileSource(TileSourceFactory.MAPNIK) // Set the tile source explicitly
+
+        // Set the tile source explicitly
+        map.setTileSource(TileSourceFactory.MAPNIK)
+
         map.setMultiTouchControls(true)
-        map.minZoomLevel = 13.0 // Set minimum zoom level
-        map.maxZoomLevel = 20.5 // Set maximum zoom level
-        map.controller.setZoom(15.0)
+        // Disable zoom buttons
+        map.zoomController.setVisibility(CustomZoomButtonsController.Visibility.NEVER)
+
+        // Set minimum and maximum zoom levels
+        map.minZoomLevel = 13.0
+        map.maxZoomLevel = 20.5
+
+        // Set initial zoom level and center point
+        map.controller.setZoom(15.8)
         val startPoint = GeoPoint(40.416775, -3.703790) // Coordinates for Madrid
         map.controller.setCenter(startPoint)
 
@@ -66,7 +80,42 @@ class CityMapFragment : Fragment() {
         )
         // Set the scrollable area limit
         map.setScrollableAreaLimitDouble(boundingBox)
+
+        // Add OpenStreetMap credit overlay
+        addCreditOverlay()
     }
+
+    private fun addCreditOverlay() {
+        val paint = Paint().apply {
+            color = Color.BLACK
+            textSize = 28f
+            isAntiAlias = true
+        }
+        val backgroundPaint = Paint().apply {
+            color = Color.WHITE
+        }
+
+        val textOverlay = object : Overlay() {
+            override fun draw(c: Canvas, osmv: MapView, shadow: Boolean) {
+                if (!shadow) {
+                    val x = 10f
+                    val y = osmv.height - 10f
+                    val text = "© OpenStreetMap contributors, ODbL"
+                    val textWidth = paint.measureText(text)
+                    val textHeight = paint.textSize
+
+                    // Dibujar el fondo blanco
+                    c.drawRect(x, y - textHeight, x + textWidth, y, backgroundPaint)
+
+                    // Dibujar el texto
+                    c.drawText(text, x, y, paint)
+                }
+            }
+        }
+
+        map.overlays.add(textOverlay)
+    }
+
 
     private fun addMarker(latitude: Double, longitude: Double, title: String, description: String) {
         val marker = Marker(map)
