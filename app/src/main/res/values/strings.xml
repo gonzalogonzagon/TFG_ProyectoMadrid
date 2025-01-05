@@ -11,4 +11,31 @@
     <string name="settings">Ajustes</string>
     <string name="about">Acerca de</string>
     <string name="exit">Salir</string>
+
+
+<!--    Point of Interest List Texts-->
+    <string name="poi_list_title">Listado de Puntos de Interés</string>
+    <string name="poi_list_subtitle">Selecciona un punto de interés para ver más información</string>
+    <string name="poi_list_no_data">No hay datos disponibles</string>
+    <string name="poi_list_no_data_subtitle">No se han encontrado puntos de interés en esta categoría</string>
+    <string name="poi_list_no_data_subtitle2">Puedes cambiar</string>
+
+<!--    Point of Interest Title Texts-->
+    <string name="plaza_mayor_title">Plaza Mayor</string>
+    <string name="puerta_sol_title">Puerta del Sol</string>
+    <string name="parque_retiro_title">Parque del Retiro</string>
+    <string name="palacio_real_title">Palacio Real</string>
+    <string name="gran_via_title">Gran Vía</string>
+    <string name="templo_debod_title">Templo de Debod</string>
+
+<!--    Point of Interest Description Texts-->
+    <string name="plaza_mayor_description">Lore ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="puerta_sol_description">Lore ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="parque_retiro_description">Lore ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="palacio_real_description">Lore ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="gran_via_description">Lore ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="templo_debod_description">Lore ipsum dolor sit amet, consectetur adipiscing elit.</string>
+
+<!--    Point of Interest Picture Texts-->
+    <string name="point_of_interest_picture">Point of Interest Picture</string>
 </resources>

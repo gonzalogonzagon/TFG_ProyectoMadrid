@@ -9,7 +9,8 @@ class PointOfInterestViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val binding = ItemListPiBinding.bind(view)
 
     fun render(pointOfInterest: PointOfInterest) {
-        binding.tvTitle.text = pointOfInterest.title
-        binding.tvDescription.text = pointOfInterest.description
+        binding.tvTitle.setText(pointOfInterest.title)
+        binding.tvDescription.setText(pointOfInterest.description)
+        binding.image.setImageResource(pointOfInterest.image)
     }
 }

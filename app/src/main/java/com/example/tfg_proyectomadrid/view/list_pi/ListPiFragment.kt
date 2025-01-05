@@ -14,25 +14,29 @@ class ListPiFragment : Fragment() {
 
     private var _binding: FragmentListPiBinding? = null
     private val binding get() = _binding!!
+    private lateinit var adapterPI: PointOfInterestAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflar el layout usando ViewBinding
         _binding = FragmentListPiBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Inicializar el RecyclerView
         initRecyclerView()
     }
 
+    // (Made by user) Function to initialize the RecyclerView
     private fun initRecyclerView() {
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = PointOfInterestAdapter(PointOfInterestProvider.pointOfInterestList)
+        adapterPI = PointOfInterestAdapter(PointOfInterestProvider.pointOfInterestList)
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = adapterPI
+        }
+        //Log.d("ListPiFragment", "RecyclerView initialized with ${adapterPI.itemCount} items")
     }
 
     override fun onDestroyView() {
