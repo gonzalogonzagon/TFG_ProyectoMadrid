@@ -23,6 +23,6 @@ class PointOfInterestAdapter(private val pointOfInterestList: List<PointOfIntere
     override fun getItemCount(): Int = pointOfInterestList.size
 
     override fun onBindViewHolder(holder: PointOfInterestViewHolder, position: Int) {
-        holder.render(pointOfInterestList[position])
+        holder.bind(pointOfInterestList[position])
     }
 }
