@@ -20,9 +20,7 @@
         android:name="com.example.tfg_proyectomadrid.view.list_pi.ListPiFragment"
         android:label="fragment_list_pi"
         tools:layout="@layout/fragment_list_pi" >
-        <action
-            android:id="@+id/action_listPiFragment_to_detailPiFragment"
-            app:destination="@id/detailPiFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/detailPiFragment"
@@ -30,3 +28,7 @@
         android:label="fragment_detail_pi"
         tools:layout="@layout/fragment_detail_pi" />
 </navigation>
+
+<!--<action-->
+<!--android:id="@+id/action_listPiFragment_to_detailPiFragment"-->
+<!--app:destination="@id/detailPiFragment" />-->
