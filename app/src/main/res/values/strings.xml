@@ -38,4 +38,8 @@
 
     <!--    Point of Interest Picture Texts-->
     <string name="point_of_interest_picture">Point of Interest Picture</string>
+
+
+    <!--    Detail Fragment Texts-->
+    <string name="lore_ipsum">Lore ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 </resources>
