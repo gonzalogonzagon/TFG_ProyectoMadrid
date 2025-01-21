@@ -11,7 +11,6 @@ import com.example.tfg_proyectomadrid.databinding.FragmentDetailPiBinding
 import com.example.tfg_proyectomadrid.model.list_pi.PointOfInterest
 import com.example.tfg_proyectomadrid.model.list_pi.PointOfInterestProvider
 
-
 class DetailPiFragment : Fragment() {
 
     private var _binding: FragmentDetailPiBinding? = null
