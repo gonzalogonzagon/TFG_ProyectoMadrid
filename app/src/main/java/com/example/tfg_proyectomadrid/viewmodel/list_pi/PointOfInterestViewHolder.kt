@@ -9,7 +9,7 @@ import com.example.tfg_proyectomadrid.model.list_pi.PointOfInterest
 class PointOfInterestViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val binding = ItemListPiBinding.bind(view)
 
-    fun bind(pointOfInterest: PointOfInterest) {
+    fun bind(pointOfInterest: PointOfInterest, clickListener: (PointOfInterest) -> Unit) {
         binding.tvTitle.setText(pointOfInterest.title)
         binding.tvDescription.setText(pointOfInterest.description)
         binding.image.setImageResource(pointOfInterest.image)
@@ -23,6 +23,12 @@ class PointOfInterestViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         binding.button2.setOnClickListener {
             // Manejar el clic del botón 2
             Toast.makeText(it.context, "Botón 2", Toast.LENGTH_SHORT).show()
+        }
+
+
+        // Establecer OnClickListener para el elemento completo
+        itemView.setOnClickListener {
+            clickListener(pointOfInterest)
         }
 
     }

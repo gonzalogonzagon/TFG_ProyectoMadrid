@@ -6,8 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfg_proyectomadrid.R
 import com.example.tfg_proyectomadrid.model.list_pi.PointOfInterest
 
-class PointOfInterestAdapter(private val pointOfInterestList: List<PointOfInterest>) :
-    RecyclerView.Adapter<PointOfInterestViewHolder>() {
+class PointOfInterestAdapter(
+    private val pointOfInterestList: List<PointOfInterest>,
+    private val clickListener: (PointOfInterest) -> Unit
+) : RecyclerView.Adapter<PointOfInterestViewHolder>() {
+
+    override fun getItemCount(): Int = pointOfInterestList.size
+
+    override fun onBindViewHolder(holder: PointOfInterestViewHolder, position: Int) {
+        holder.bind(pointOfInterestList[position], clickListener)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PointOfInterestViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -18,11 +26,5 @@ class PointOfInterestAdapter(private val pointOfInterestList: List<PointOfIntere
                 false
             )
         )
-    }
-
-    override fun getItemCount(): Int = pointOfInterestList.size
-
-    override fun onBindViewHolder(holder: PointOfInterestViewHolder, position: Int) {
-        holder.bind(pointOfInterestList[position])
     }
 }

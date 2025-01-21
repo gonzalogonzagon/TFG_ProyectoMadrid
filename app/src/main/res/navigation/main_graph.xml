@@ -19,16 +19,23 @@
         android:id="@+id/listPiFragment"
         android:name="com.example.tfg_proyectomadrid.view.list_pi.ListPiFragment"
         android:label="fragment_list_pi"
-        tools:layout="@layout/fragment_list_pi" >
+        tools:layout="@layout/fragment_list_pi">
 
+        <action
+            android:id="@+id/action_listPiFragment_to_detailPiFragment"
+            app:destination="@id/detailPiFragment"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/detailPiFragment"
         android:name="com.example.tfg_proyectomadrid.view.list_pi.DetailPiFragment"
         android:label="fragment_detail_pi"
-        tools:layout="@layout/fragment_detail_pi" />
+        tools:layout="@layout/fragment_detail_pi">
+        <argument
+            android:name="pointOfInterestId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
-
-<!--<action-->
-<!--android:id="@+id/action_listPiFragment_to_detailPiFragment"-->
-<!--app:destination="@id/detailPiFragment" />-->

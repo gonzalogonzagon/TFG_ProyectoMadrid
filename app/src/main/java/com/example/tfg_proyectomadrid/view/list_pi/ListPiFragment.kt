@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tfg_proyectomadrid.databinding.FragmentListPiBinding
 import com.example.tfg_proyectomadrid.model.list_pi.PointOfInterestProvider
@@ -31,7 +32,11 @@ class ListPiFragment : Fragment() {
 
     // (Made by user) Function to initialize the RecyclerView
     private fun initRecyclerView() {
-        adapterPI = PointOfInterestAdapter(PointOfInterestProvider.pointOfInterestList)
+        adapterPI = PointOfInterestAdapter(PointOfInterestProvider.pointOfInterestList) { pointOfInterest ->
+            // Navegar al fragmento en detalle
+            val action = ListPiFragmentDirections.actionListPiFragmentToDetailPiFragment(pointOfInterest.title)
+            findNavController().navigate(action)
+        }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterPI
