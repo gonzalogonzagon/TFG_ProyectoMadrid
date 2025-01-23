@@ -159,9 +159,10 @@
         android:layout_margin="16dp"
         android:contentDescription="back"
         android:padding="24dp"
+        app:fabSize="auto"
         android:src="@drawable/ic_back"
         app:backgroundTint="@color/white"
-        app:layout_anchorGravity="top|start" />
+        android:layout_gravity="top|start" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
