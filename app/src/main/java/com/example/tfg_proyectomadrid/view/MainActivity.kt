@@ -45,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         if (navHostFragment != null) {
             navController = navHostFragment.navController
             binding.bottomNavMenu.setupWithNavController(navController)
+
+            //navController.addOnDestinationChangedListener()
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                if (destination.id == R.id.detailPiFragment) {
+                    binding.bottomNavMenu.menu.findItem(R.id.listPiFragment).isChecked = true
+                }
+            }
+
         } else {
             // Manejo del caso en que el fragmento no se encuentra
             handleError("NavHostFragment no encontrado")

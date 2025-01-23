@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.tfg_proyectomadrid.BuildConfig
 import com.example.tfg_proyectomadrid.databinding.FragmentCityMapBinding
@@ -17,6 +18,7 @@ import org.osmdroid.util.BoundingBox
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.CopyrightOverlay
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.Overlay
 
@@ -86,35 +88,42 @@ class CityMapFragment : Fragment() {
     }
 
     private fun addCreditOverlay() {
-        val paint = Paint().apply {
-            color = Color.BLACK
-            textSize = 28f
-            isAntiAlias = true
-        }
-        val backgroundPaint = Paint().apply {
-            color = Color.WHITE
-        }
-
-        val textOverlay = object : Overlay() {
-            override fun draw(c: Canvas, osmv: MapView, shadow: Boolean) {
-                if (!shadow) {
-                    val x = 10f
-                    val y = osmv.height - 10f
-                    val text = "© OpenStreetMap contributors, ODbL"
-                    val textWidth = paint.measureText(text)
-                    val textHeight = paint.textSize
-
-                    // Dibujar el fondo blanco
-                    c.drawRect(x, y - textHeight, x + textWidth, y, backgroundPaint)
-
-                    // Dibujar el texto
-                    c.drawText(text, x, y, paint)
-                }
-            }
-        }
-
-        map.overlays.add(textOverlay)
+        val copyrightNotice = map.tileProvider.tileSource.copyrightNotice
+        val copyrightOverlay = CopyrightOverlay(context)
+        copyrightOverlay.setCopyrightNotice(copyrightNotice)
+        map.overlays.add(copyrightOverlay)
     }
+
+//    private fun addCreditOverlay() {
+//        val paint = Paint().apply {
+//            color = Color.BLACK
+//            textSize = 28f
+//            isAntiAlias = true
+//        }
+//        val backgroundPaint = Paint().apply {
+//            color = Color.WHITE
+//        }
+//
+//        val textOverlay = object : Overlay() {
+//            override fun draw(c: Canvas, osmv: MapView, shadow: Boolean) {
+//                if (!shadow) {
+//                    val x = 10f
+//                    val y = osmv.height - 10f
+//                    val text = "© OpenStreetMap contributors, ODbL"
+//                    val textWidth = paint.measureText(text)
+//                    val textHeight = paint.textSize
+//
+//                    // Dibujar el fondo blanco
+//                    c.drawRect(x, y - textHeight, x + textWidth, y, backgroundPaint)
+//
+//                    // Dibujar el texto
+//                    c.drawText(text, x, y, paint)
+//                }
+//            }
+//        }
+//
+//        map.overlays.add(textOverlay)
+//    }
 
 
     private fun addMarker(latitude: Double, longitude: Double, title: String, description: String) {
@@ -122,6 +131,8 @@ class CityMapFragment : Fragment() {
         marker.position = GeoPoint(latitude, longitude)
         marker.title = title
         marker.snippet = description
+        marker.icon = ContextCompat.getDrawable(requireContext(), android.R.drawable.star_big_on)
+        //marker.icon = resources.getDrawable(android.R.drawable.star_big_on)
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         map.overlays.add(marker)
         map.invalidate() // Refresh the map to show the marker
