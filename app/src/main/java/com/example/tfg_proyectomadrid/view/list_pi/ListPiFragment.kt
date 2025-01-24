@@ -32,11 +32,13 @@ class ListPiFragment : Fragment() {
 
     // (Made by user) Function to initialize the RecyclerView
     private fun initRecyclerView() {
-        adapterPI = PointOfInterestAdapter(PointOfInterestProvider.pointOfInterestList) { pointOfInterest ->
-            // Navegar al fragmento en detalle
-            val action = ListPiFragmentDirections.actionListPiFragmentToDetailPiFragment(pointOfInterest.title)
-            findNavController().navigate(action)
-        }
+        adapterPI =
+            PointOfInterestAdapter(PointOfInterestProvider.pointOfInterestList) { pointOfInterest ->
+                // Navegar al fragmento en detalle
+                val action =
+                    ListPiFragmentDirections.actionListPiFragmentToDetailPiFragment(pointOfInterest.title)
+                findNavController().navigate(action)
+            }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterPI

@@ -9,7 +9,11 @@
         android:id="@+id/cityMapFragment"
         android:name="com.example.tfg_proyectomadrid.view.maps.CityMapFragment"
         android:label="fragment_city_map"
-        tools:layout="@layout/fragment_city_map" />
+        tools:layout="@layout/fragment_city_map">
+        <action
+            android:id="@+id/action_cityMapFragment_to_detailPiFragment"
+            app:destination="@id/detailPiFragment" />
+    </fragment>
     <fragment
         android:id="@+id/collectablesFragment"
         android:name="com.example.tfg_proyectomadrid.view.collectables.CollectablesFragment"

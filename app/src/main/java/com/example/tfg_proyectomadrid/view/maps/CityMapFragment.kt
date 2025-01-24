@@ -1,9 +1,6 @@
 package com.example.tfg_proyectomadrid.view.maps
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.tfg_proyectomadrid.BuildConfig
 import com.example.tfg_proyectomadrid.databinding.FragmentCityMapBinding
+import com.example.tfg_proyectomadrid.model.list_pi.PointOfInterest
+import com.example.tfg_proyectomadrid.model.list_pi.PointOfInterestProvider
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.BoundingBox
@@ -20,7 +19,8 @@ import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.CopyrightOverlay
 import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.Overlay
+import kotlin.math.cos
+import kotlin.math.sin
 
 class CityMapFragment : Fragment() {
 
@@ -50,7 +50,8 @@ class CityMapFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Initialize and configure UI components here
         setupMap()
-        addMarker(40.416775, -3.703790, "Madrid", "Capital of Spain")
+        //addMarker(40.416775, -3.703790, "Madrid", "Capital of Spain")
+        addMarkers(PointOfInterestProvider.pointOfInterestList)
     }
 
     private fun setupMap() {
@@ -94,6 +95,33 @@ class CityMapFragment : Fragment() {
         map.overlays.add(copyrightOverlay)
     }
 
+
+    private fun addMarkers(pointsOfInterest: List<PointOfInterest>) {
+        val centerLatitude = 40.416775
+        val centerLongitude = -3.703790
+        val radius = 0.01
+        val angleStep = 360.0 / pointsOfInterest.size
+
+        for ((index, poi) in pointsOfInterest.withIndex()) {
+            val angle = Math.toRadians(index * angleStep)
+            val latitude = centerLatitude + radius * cos(angle)
+            val longitude = centerLongitude + radius * sin(angle)
+            addMarker(latitude, longitude, poi)
+        }
+    }
+
+    private fun addMarker(latitude: Double, longitude: Double, pointOfInterest: PointOfInterest) {
+        val marker = Marker(map)
+        marker.position = GeoPoint(latitude, longitude)
+        marker.title = getString(pointOfInterest.title)
+        marker.snippet = getString(pointOfInterest.description)
+        marker.icon = ContextCompat.getDrawable(requireContext(), android.R.drawable.star_big_on)
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+        marker.infoWindow = CustomInfoWindow(map, pointOfInterest)
+        map.overlays.add(marker)
+        map.invalidate()
+    }
+
 //    private fun addCreditOverlay() {
 //        val paint = Paint().apply {
 //            color = Color.BLACK
@@ -125,18 +153,65 @@ class CityMapFragment : Fragment() {
 //        map.overlays.add(textOverlay)
 //    }
 
+//    private fun addMarkers(pointsOfInterest: List<PointOfInterest>) {
+//        val centerLatitude = 40.416775
+//        val centerLongitude = -3.703790
+//        val radius = 0.01 // Radio del círculo en grados
+//
+//        val angleStep = 360.0 / pointsOfInterest.size
+//
+//        for ((index, poi) in pointsOfInterest.withIndex()) {
+//            val angle = Math.toRadians(index * angleStep)
+//            val latitude = centerLatitude + radius * cos(angle)
+//            val longitude = centerLongitude + radius * sin(angle)
+//            addMarker(latitude, longitude, getString(poi.title), getString(poi.description))
+//        }
+//    }
+//
+//    private fun addMarker(latitude: Double, longitude: Double, title: String, description: String) {
+//        val marker = Marker(map)
+//        marker.position = GeoPoint(latitude, longitude)
+//        marker.title = title
+//        marker.snippet = description
+//        marker.icon = ContextCompat.getDrawable(requireContext(), android.R.drawable.star_big_on)
+//        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+//
+////        // Set custom info window
+////        marker.infoWindow = CustomInfoWindow(map)
+//
+//        // Set custom info window
+////        marker.setOnMarkerClickListener { _, _ ->
+////            //showInfoWindow(title, description)
+////            showInfoWindow()
+////            true
+////        }
+//
+//        map.overlays.add(marker)
+//        map.invalidate() // Refresh the map to show the marker
+//    }
+//
+//    private fun showInfoWindow() {
+////        infoWindowBinding.tvTitle.text = title
+////        infoWindowBinding.tvDescription.text = description
+//        infoWindowBinding.root.visibility = View.VISIBLE
+//    }
+//
+//    private fun hideInfoWindow() {
+//        infoWindowBinding.root.visibility = View.GONE
+//    }
+//
 
-    private fun addMarker(latitude: Double, longitude: Double, title: String, description: String) {
-        val marker = Marker(map)
-        marker.position = GeoPoint(latitude, longitude)
-        marker.title = title
-        marker.snippet = description
-        marker.icon = ContextCompat.getDrawable(requireContext(), android.R.drawable.star_big_on)
-        //marker.icon = resources.getDrawable(android.R.drawable.star_big_on)
-        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-        map.overlays.add(marker)
-        map.invalidate() // Refresh the map to show the marker
-    }
+//    private fun addMarker(latitude: Double, longitude: Double, title: String, description: String) {
+//        val marker = Marker(map)
+//        marker.position = GeoPoint(latitude, longitude)
+//        marker.title = title
+//        marker.snippet = description
+//        marker.icon = ContextCompat.getDrawable(requireContext(), android.R.drawable.star_big_on)
+//        //marker.icon = resources.getDrawable(android.R.drawable.star_big_on)
+//        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+//        map.overlays.add(marker)
+//        map.invalidate() // Refresh the map to show the marker
+//    }
 
     override fun onResume() {
         super.onResume()

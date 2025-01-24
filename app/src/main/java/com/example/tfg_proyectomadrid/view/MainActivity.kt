@@ -49,7 +49,15 @@ class MainActivity : AppCompatActivity() {
             //navController.addOnDestinationChangedListener()
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 if (destination.id == R.id.detailPiFragment) {
-                    binding.bottomNavMenu.menu.findItem(R.id.listPiFragment).isChecked = true
+                    //binding.bottomNavMenu.menu.findItem(R.id.listPiFragment).isChecked = true
+                    when (navController.previousBackStackEntry?.destination?.id) {
+                        R.id.listPiFragment -> {
+                            binding.bottomNavMenu.menu.findItem(R.id.listPiFragment).isChecked = true
+                        }
+                        R.id.cityMapFragment -> {
+                            binding.bottomNavMenu.menu.findItem(R.id.cityMapFragment).isChecked = true
+                        }
+                    }
                 }
             }
 
