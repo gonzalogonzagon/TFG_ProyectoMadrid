@@ -3,16 +3,18 @@ package com.example.tfg_proyectomadrid.view.maps
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.tfg_proyectomadrid.R
-import com.example.tfg_proyectomadrid.databinding.ItemListPiBinding
+import com.example.tfg_proyectomadrid.databinding.ItemCustomBubbleMapBinding
 import com.example.tfg_proyectomadrid.model.list_pi.PointOfInterest
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.infowindow.InfoWindow
+import org.osmdroid.views.overlay.infowindow.MarkerInfoWindow
 
 class CustomInfoWindow(mapView: MapView, private val pointOfInterest: PointOfInterest) :
-    InfoWindow(R.layout.item_list_pi, mapView) {
+    InfoWindow(R.layout.item_custom_bubble_map, mapView) {
+//    MarkerInfoWindow(R.layout.item_custom_bubble_map, mapView) {
 
-    private val binding: ItemListPiBinding = ItemListPiBinding.bind(mView)
+    private val binding: ItemCustomBubbleMapBinding = ItemCustomBubbleMapBinding.bind(mView)
 
     override fun onClose() {
         // Nothing to do here
@@ -22,11 +24,11 @@ class CustomInfoWindow(mapView: MapView, private val pointOfInterest: PointOfInt
         val marker = item as Marker
 
         // Set the title and description
-        binding.tvTitle.text = marker.title
-        binding.tvDescription.text = marker.snippet
+        binding.bubbleTitle.text = marker.title
+        binding.bubbleDescription.text = marker.snippet
 
         // Set the image (you can customize this as needed)
-        binding.image.setImageDrawable(
+        binding.bubbleImage.setImageDrawable(
             ContextCompat.getDrawable(
                 binding.root.context,
                 R.drawable.ic_launcher_foreground
@@ -48,5 +50,7 @@ class CustomInfoWindow(mapView: MapView, private val pointOfInterest: PointOfInt
         binding.button2.setOnClickListener {
             // Handle button 2 click
         }
+
+        //mView.y = (mapView.height - mView.height - 50).toFloat()
     }
 }
